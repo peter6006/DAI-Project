@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.ei.uvigo.es/dai/proyecto"
+	xmlns:tns="http://www.ei.uvigo.es/dai/proyecto" 
+	elementFormDefault="qualified">
+	
+
+	
+	
+	
+	
+	<complexType name="connections">
+		
+			<attribute name="http" type="int"/>
+			<attribute name="webservice" type="string"/>
+			<attribute name="numClients" type="int"/>
+		
+		
+	</complexType>
+	
+	
+	<complexType name="database">
+	<sequence>
+		<element name="user" type="string"/>
+		<element name="password" type="string"/>
+		<element name="url" type="string"/>
+	</sequence>
+	</complexType>
+	
+	
+	
+	
+	
+	
+	
+	
+	<complexType name="server">	
+		<attribute name="name" type="string"/>
+		<attribute name="wsdl" type="string" use="required"/>
+		<attribute name="namespace" type="string" use="required"/>
+		<attribute name="service" type="string" use="required"/>
+		<attribute name="httpAddress" type="string"/>	
+	</complexType>
+	
+	
+
+	
+	<complexType name="servers">
+		<sequence>
+			<element name="server" type="tns:server" maxOccurs="3"/>
+		</sequence>
+	</complexType>
+	
+	
+	<element name="configuration">
+		<complexType>
+			<sequence>
+				<element name="connections" type="tns:connections"/>
+				<element name="database" type="tns:database"/>
+				<element name="servers" type="tns:servers"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+</schema>
